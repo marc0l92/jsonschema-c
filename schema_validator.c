@@ -388,6 +388,7 @@ json_check_allowed_values(const int keyword_position,struct json_object * value,
 		break;
 		case json_value_matches_regex:
 			res = json_validate_value_regex(key, value);
+		break;
 		case json_value_is_object:
 		default:
 			res = 1 ;
@@ -510,7 +511,6 @@ json_validate_schema(struct json_object *schema) {
 
 int 
 json_validate_schema_from_file(const char* filename) {
-	int res;
 	json_object *schema = json_object_from_file(filename);
 	if(schema == NULL) {
 		json_printf_colored("could not load schema from file.",ANSI_COLOR_RED);
